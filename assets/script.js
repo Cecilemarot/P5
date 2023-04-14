@@ -33,19 +33,18 @@ function goBack() {
 	}
 	banner.src = slides[currentPosition].image;
 }
-
-
-
+function goAhead() {
+	currentPosition += 1;
+	if (currentPosition === +1) {
+		currentPosition = slides.length + 1;
+	}
+	banner.src = slides[currentPosition].image;
+}
 
 leftArrow.addEventListener('click', goBack);
-rightArrow.addEventListener('click', maFonction);
+rightArrow.addEventListener('click', goAhead);
 
 
-
-
-function maFonction() {
-	alert('Le bouton a été cliqué!');
-}
 
 
 
