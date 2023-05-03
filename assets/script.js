@@ -22,33 +22,43 @@ const boutons = document.querySelectorAll('.arrow');
 let leftArrow = boutons[0];
 let rightArrow = boutons[1];
 const banner = document.querySelector('.banner-img');
-const dots = document.querySelector('.dots');
-const text = document.querySelector('banner-text');
+const text = document.querySelector('.banner-text');
 let currentPosition = 0;
+const dots = document.querySelectorAll('.dots');
+const dot_selected = document.querySelector('.dot_selected')
 
 function goBack() {
-	currentPosition -= 1;
+
+	dots[currentPosition].classList.remove('.dot_selected')
+
 	if (currentPosition === -1) {
 		currentPosition = slides.length - 1;
+	} else {
+		currentPosition -= 1;
 	}
+
 	banner.src = slides[currentPosition].image;
+	text.innerHTML = slides[currentPosition].tagLine;
+	dots[currentPosition].classList.add('dot_selected');
 }
 function goAhead() {
-	currentPosition += 1;
-	if (currentPosition === +1) {
-		currentPosition = slides.length + 1;
+
+	dots[currentPosition].classList.remove('.dot_selected')
+	if (currentPosition === slides.length) {
+		currentPosition = 0;
+	} else {
+		currentPosition += 1;
 	}
+
 	banner.src = slides[currentPosition].image;
+	text.innerHTML = slides[currentPosition].tagLine;
+	dots[currentPosition].classList.add('dot_selected');
 }
+
 
 leftArrow.addEventListener('click', goBack);
 rightArrow.addEventListener('click', goAhead);
 
-
-
-
-
 for (let i = 0; i < slides.length; i++) {
 	const age = slides[i];
 }
-
